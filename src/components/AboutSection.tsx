@@ -17,6 +17,11 @@ const values = [
     title: "Community",
     desc: "A warm community of like-minded students, supportive staff, and a culture that encourages academic excellence.",
   },
+  {
+    icon: Heart,
+    title: "Affordable Pricing",
+    desc: "Fair, transparent pricing with great value for students and parents.",
+  },
 ];
 
 const AboutSection = () => {
@@ -30,15 +35,15 @@ const AboutSection = () => {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl text-foreground leading-[1.15] mb-5">
             More Than a Hostel —<br />A Second Home
           </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Sushmita Girls' Hostel was founded with a simple mission: to give every young woman
+          <p className="text-muted-foreground text-lg leading-relaxed text-justify">
+            Sushmita Girls Hostel was founded in 2010 by Sushmita Sinha and Rakesh Sinha with a simple mission: to give every young woman
             pursuing education in Patna a place that feels like home. Our owners are personally
             involved in daily operations, ensuring every resident receives individual attention,
             nutritious meals, and a secure environment where they can focus entirely on their goals.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 stagger-children">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
           {values.map((v) => (
             <div
               key={v.title}

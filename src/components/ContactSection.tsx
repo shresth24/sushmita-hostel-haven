@@ -5,12 +5,34 @@ import { Phone, Mail, Clock, Send } from "lucide-react";
 
 const ContactSection = () => {
   const ref = useScrollReveal();
-  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    occupancy: "",
+    duration: "",
+    branch: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    const message = [
+      "New Hostel Enquiry",
+      `Name: ${formData.name}`,
+      `Phone: ${formData.phone}`,
+      `Occupancy: ${formData.occupancy}`,
+      `Duration: ${formData.duration}`,
+      `Branch: ${formData.branch}`,
+    ].join("\n");
+
+    const whatsappUrl = `https://wa.me/918920052655?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -35,8 +57,8 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <p className="font-medium text-foreground text-sm">Phone</p>
-                  <p className="text-muted-foreground text-sm">+91 98765 43210</p>
-                  <p className="text-muted-foreground text-sm">+91 91234 56789</p>
+                  <p className="text-muted-foreground text-sm">+91 94316 25833</p>
+                  <p className="text-muted-foreground text-sm">+91 93414 53366</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -45,7 +67,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <p className="font-medium text-foreground text-sm">Email</p>
-                  <p className="text-muted-foreground text-sm">info@sushmitagirlshostel.com</p>
+                  <p className="text-muted-foreground text-sm">sushmitagirlshostelpatna@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -63,22 +85,16 @@ const ContactSection = () => {
 
           {/* Form */}
           <div className="bg-surface rounded-2xl p-8 sm:p-10">
-            {submitted ? (
-              <div className="flex flex-col items-center justify-center h-full text-center py-12 animate-fade-in">
-                <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mb-4">
-                  <Send className="text-green-600" size={22} />
-                </div>
-                <h3 className="font-display text-xl text-foreground mb-2">Message Sent!</h3>
-                <p className="text-muted-foreground text-sm">We'll get back to you shortly. Thank you for your interest.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-1.5">Full Name</label>
                   <input
                     type="text"
                     required
+                    name="name"
                     placeholder="Enter your name"
+                    value={formData.name}
+                    onChange={handleChange}
                     className="w-full h-11 px-4 rounded-xl border border-border bg-background text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
                   />
                 </div>
@@ -87,24 +103,61 @@ const ContactSection = () => {
                   <input
                     type="tel"
                     required
+                    name="phone"
                     placeholder="+91 XXXXX XXXXX"
+                    value={formData.phone}
+                    onChange={handleChange}
                     className="w-full h-11 px-4 rounded-xl border border-border bg-background text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1.5">Message</label>
-                  <textarea
+                  <label className="block text-sm font-medium text-foreground mb-1.5">Occupancy</label>
+                  <select
                     required
-                    rows={4}
-                    placeholder="Tell us about your requirements..."
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow resize-none"
-                  />
+                    name="occupancy"
+                    value={formData.occupancy}
+                    onChange={handleChange}
+                    className="w-full h-11 px-4 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
+                  >
+                    <option value="" disabled>Select occupancy</option>
+                    <option value="Single">Single</option>
+                    <option value="Double">Double</option>
+                    <option value="Triple">Triple</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">Duration of Stay</label>
+                  <select
+                    required
+                    name="duration"
+                    value={formData.duration}
+                    onChange={handleChange}
+                    className="w-full h-11 px-4 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
+                  >
+                    <option value="" disabled>Select duration</option>
+                    <option value="< 6 months">&lt; 6 months</option>
+                    <option value="< 1 year">&lt; 1 year</option>
+                    <option value="> 1 year">&gt; 1 year</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">Branch</label>
+                  <select
+                    required
+                    name="branch"
+                    value={formData.branch}
+                    onChange={handleChange}
+                    className="w-full h-11 px-4 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
+                  >
+                    <option value="" disabled>Select branch</option>
+                    <option value="Boring Road">Boring Road</option>
+                    <option value="Rajapur">Rajapur</option>
+                  </select>
                 </div>
                 <Button type="submit" className="w-full" size="lg">
                   Send Inquiry
                 </Button>
               </form>
-            )}
           </div>
         </div>
       </div>

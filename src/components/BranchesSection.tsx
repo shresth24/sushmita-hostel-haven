@@ -15,8 +15,8 @@ const branches = [
     mapQuery: "House+No+14+Montessori+School+Lane+Boring+Road+Patna",
   },
   {
-    name: "Buddha Colony Branch",
-    address: "4th Floor, East Boring Canal Link Road, Buddha Colony, Patna",
+    name: "Rajapur Branch",
+    address: "4th Floor, Awaas apt. Rajapur Pul Beside Reiance Digital, Patna 800001",
     features: [
       "Modern infrastructure",
       "Easy accessibility via main road",
@@ -24,7 +24,7 @@ const branches = [
       "Near markets & essential services",
     ],
     icon: Building2,
-    mapQuery: "East+Boring+Canal+Link+Road+Buddha+Colony+Patna",
+    mapQuery: "4th+Floor,+Awaas+apt.+Rajapur+Pul+Beside+Reiance+Digital,+Patna+800001",
   },
 ];
 

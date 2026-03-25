@@ -6,7 +6,7 @@ import {
   Zap,
   Bath,
   BedDouble,
-  Tv,
+  Droplet,
   Lock,
 } from "lucide-react";
 
@@ -17,7 +17,7 @@ const facilities = [
   { icon: Utensils, title: "Hygienic Meals", desc: "Nutritious home-style meals prepared in a clean kitchen" },
   { icon: Zap, title: "Power Backup", desc: "Generator backup ensuring uninterrupted electricity" },
   { icon: Bath, title: "Clean Washrooms", desc: "Well-maintained and sanitized washrooms on every floor" },
-  { icon: Tv, title: "Recreation Area", desc: "Common room with TV for relaxation and socialising" },
+  { icon: Droplet, title: "RO Water Cooler", desc: "Clean, chilled RO drinking water available on every floor" },
   { icon: Lock, title: "Secure Lockers", desc: "Personal storage lockers to safeguard your belongings" },
 ];
 
