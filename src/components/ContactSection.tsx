@@ -31,7 +31,7 @@ const ContactSection = () => {
       `Branch: ${formData.branch}`,
     ].join("\n");
 
-    const whatsappUrl = `https://wa.me/918920052655?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/917903004001?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
