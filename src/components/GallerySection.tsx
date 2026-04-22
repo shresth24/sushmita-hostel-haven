@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const galleryItems = [
-  { label: "Building Exterior", span: "col-span-2 row-span-2", image: "/gallery/building-exterior.png" },
-  { label: "Entrance", span: "", image: "/gallery/entrance.png" },
-  { label: "Double Room", span: "", image: "/gallery/double-room.png" },
-  { label: "Common Area", span: "col-span-2", video: "/gallery/common-area.mp4" },
-  { label: "Saraswati Pooja Celebration", span: "col-span-2", image: "/gallery/saraswati-pooja-1.png" },
-  { label: "Saraswati Pooja Celebration", span: "col-span-2", image: "/gallery/saraswati-pooja-2.png" },
+  { id: "building-exterior", label: "Building Exterior", span: "col-span-2 row-span-2", image: "/gallery/building-exterior.png" },
+  { id: "entrance", label: "Entrance", span: "", image: "/gallery/entrance.png" },
+  { id: "double-room", label: "Double Room", span: "", image: "/gallery/double-room.png" },
+  { id: "common-area", label: "Common Area", span: "col-span-2", video: "/gallery/common-area.mp4" },
+  { id: "saraswati-pooja-1", label: "Saraswati Pooja Celebration", span: "col-span-2", image: "/gallery/saraswati-pooja-1.png" },
+  { id: "saraswati-pooja-2", label: "Saraswati Pooja Celebration", span: "col-span-2", image: "/gallery/saraswati-pooja-2.png" },
 ];
 
 const GallerySection = () => {
@@ -15,7 +15,16 @@ const GallerySection = () => {
   const [activeMedia, setActiveMedia] = useState<{ src: string; label: string; type: "image" | "video" } | null>(
     null,
   );
-  const [hoverTimeoutId, setHoverTimeoutId] = useState<number | null>(null);
+  const hoverTimeoutRef = useRef<number | null>(null);
+
+  const clearHoverTimeout = () => {
+    if (hoverTimeoutRef.current !== null) {
+      window.clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+  };
+
+  useEffect(() => clearHoverTimeout, []);
 
   return (
     <section id="gallery" className="section-padding">
@@ -33,13 +42,14 @@ const GallerySection = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 stagger-children">
           {galleryItems.map((item) => (
             <div
-              key={item.label}
+              key={item.id}
               className={`${item.span} bg-muted rounded-2xl min-h-[180px] flex items-end p-5 relative overflow-hidden group bg-cover bg-center`}
               style={item.image ? { backgroundImage: `url("${item.image}")` } : undefined}
               onMouseEnter={
                 item.image || item.video
                   ? () => {
-                      const id = window.setTimeout(
+                      clearHoverTimeout();
+                      hoverTimeoutRef.current = window.setTimeout(
                         () =>
                           setActiveMedia({
                             src: (item.image ?? item.video) as string,
@@ -48,17 +58,13 @@ const GallerySection = () => {
                           }),
                         120,
                       );
-                      setHoverTimeoutId(id);
                     }
                   : undefined
               }
               onMouseLeave={
                 item.image || item.video
                   ? () => {
-                      if (hoverTimeoutId !== null) {
-                        window.clearTimeout(hoverTimeoutId);
-                        setHoverTimeoutId(null);
-                      }
+                      clearHoverTimeout();
                       setActiveMedia(null);
                     }
                   : undefined

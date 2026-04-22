@@ -17,16 +17,15 @@ const HeroSection = () => {
             <span>Trusted by 200+ families in Patna</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display leading-[1.1] tracking-tight text-white mb-6">
-            Sushmita Girls Hostel
-            <br />
-            Home Away From Home
-          </h1>
+         <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display leading-[1.1] tracking-tight text-white mb-6 max-w-4xl">
+         Sushmita Girls Hostel in Patna
+         <span className="block">Home Away From Home</span>
+         </h1>
 
           <p className="text-lg sm:text-xl text-white/80 max-w-xl mb-10 leading-relaxed">
             Where your daughter's safety meets comfort. Our owner-managed hostel
-            provides secure, hygienic, and caring accommodation for female students
-            pursuing their dreams.
+            provides secure, hygienic, and caring accommodation in Patna for female
+            students pursuing their dreams.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
