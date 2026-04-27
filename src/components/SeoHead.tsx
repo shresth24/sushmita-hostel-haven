@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { siteConfig } from "@/content/site";
 import { toAbsoluteUrl } from "@/lib/seo";
+import { useSeoCapture } from "@/lib/seoContext";
 
 type StructuredData = Record<string, unknown>;
 
@@ -53,15 +54,28 @@ const SeoHead = ({
   robots = "index,follow",
   structuredData,
 }: SeoHeadProps) => {
-  useEffect(() => {
-    const canonicalUrl = toAbsoluteUrl(path);
-    const imageUrl = toAbsoluteUrl(image);
-    const schemaEntries = structuredData
-      ? Array.isArray(structuredData)
-        ? structuredData
-        : [structuredData]
-      : [];
+  const seoCapture = useSeoCapture();
+  const canonicalUrl = toAbsoluteUrl(path);
+  const imageUrl = toAbsoluteUrl(image);
+  const schemaEntries = structuredData
+    ? Array.isArray(structuredData)
+      ? structuredData
+      : [structuredData]
+    : [];
 
+  if (seoCapture) {
+    seoCapture.current = {
+      title,
+      description,
+      canonicalUrl,
+      imageUrl,
+      type,
+      robots,
+      structuredData: schemaEntries,
+    };
+  }
+
+  useEffect(() => {
     document.title = title;
 
     upsertMeta('meta[name="description"]', "name", description);
