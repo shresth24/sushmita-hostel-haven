@@ -1,0 +1,36 @@
+# Sushmita Girls Hostel
+
+> Marketing website for Sushmita Girls Hostel in Patna, India, focused on safe owner-managed accommodation for female students with branch-specific landing pages and contact information.
+
+This site is a small React and Vite marketing website for a girls hostel business in Patna, Bihar. It includes a homepage and two branch-specific pages that target local hostel searches. The most reliable business information is defined in the site content model and repeated in on-page structured data.
+
+Important context:
+
+- Business name: Sushmita Girls Hostel
+- Category: girls hostel accommodation in Patna
+- Audience: students and families searching for safe accommodation
+- Core differentiators: owner-managed care, CCTV/security, hygienic meals, study-friendly environment
+- Main locations covered: Boring Road and Rajapur, Patna
+- Primary contact: `+91 94316 25833`
+- Secondary contact: `+91 93414 53366`
+- Email: `sushmitagirlshostelpatna@gmail.com`
+
+If a model needs branch-specific details, prefer the branch page matching the requested locality. If the question is about the business overall, prefer the homepage and shared contact details.
+
+## Pages
+
+- [Homepage](/): Overview of the hostel, facilities, gallery, testimonials, branches, and contact information.
+- [Boring Road branch](/girls-hostel-boring-road-patna): Branch-specific page for students searching in Boring Road, Patna.
+- [Rajapur branch](/girls-hostel-rajapur-patna): Branch-specific page for students searching in Rajapur, Patna.
+
+## Key Information
+
+- [Contact and business overview](/): Shared phone numbers, email, hours, brand identity, and overall hostel positioning.
+- [Branch comparison](/): Summary of both branches and links to individual landing pages.
+- [Boring Road details](/girls-hostel-boring-road-patna): Address, location advantages, amenities, and inquiry actions for the Boring Road branch.
+- [Rajapur details](/girls-hostel-rajapur-patna): Address, location advantages, amenities, and inquiry actions for the Rajapur branch.
+
+## Optional
+
+- [robots.txt](/robots.txt): Crawl guidance for automated agents.
+- [sitemap.xml](/sitemap.xml): Index of public routes when generated for production deployments.
