@@ -1,4 +1,4 @@
-import { siteConfig } from "@/content/site";
+import { branches, siteConfig } from "@/content/site";
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { Phone, Mail, Clock } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -176,8 +176,11 @@ const ContactSection = () => {
                   className="w-full h-11 px-4 rounded-xl border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
                 >
                   <option value="" disabled>Select branch</option>
-                  <option value="Boring Road">Boring Road</option>
-                  <option value="Rajapur">Rajapur</option>
+                  {branches.map((branch) => (
+                    <option key={branch.slug} value={branch.shortName}>
+                      {branch.shortName}
+                    </option>
+                  ))}
                 </select>
               </div>
               <Button type="submit" className="w-full" size="lg">

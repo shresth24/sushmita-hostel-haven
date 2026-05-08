@@ -21,7 +21,11 @@ const normalizeSiteUrl = (value) => {
 
 const siteUrl = normalizeSiteUrl(rawSiteUrl);
 
-const routes = ["/", "/girls-hostel-boring-road-patna", "/girls-hostel-rajapur-patna"];
+const routes = [
+  "/",
+  "/girls-hostel-boring-road-patna",
+  "/girls-hostel-rajapur-patna",
+];
 
 const { render } = await import(pathToFileURL(serverEntryPath).href);
 

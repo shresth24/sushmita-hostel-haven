@@ -41,7 +41,11 @@ export const branches = [
     name: "Sushmita Girls Hostel - Boring Road Branch",
     locality: "Boring Road",
     addressLine1: "House No. 14, Montessori School Lane",
-    address: "House No. 14, Montessori School Lane, Boring Road, Patna 800001",
+    address: "House No. 60B and House No. 14, Montessori School Lane, Boring Road, Patna 800001",
+    addressPoints: [
+      "House No. 60B, Montessori School Lane, Boring Road, Patna 800001",
+      "House No. 14, Montessori School Lane, Boring Road, Patna 800001",
+    ],
     postalCode: "800001",
     image: "/gallery/building-exterior.png",
     mapQuery: "House+No+14+Montessori+School+Lane+Boring+Road+Patna+800001",
@@ -49,9 +53,37 @@ export const branches = [
     description:
       "Find a safe girls hostel in Boring Road, Patna with owner-managed care, CCTV security, hygienic meals, and quick access to colleges and coaching institutes.",
     intro:
-      "Our Boring Road branch is designed for students who want a calm residential setting while staying close to Patna's academic hubs.",
+      "Our Boring Road branch serves students at both House No. 14 and House No. 60B, Montessori School Lane, with the same owner-managed support in a calm, study-friendly setting close to Patna's academic hubs.",
+    subLocations: [
+      {
+        label: "House No. 14",
+        address: "House No. 14, Montessori School Lane, Boring Road, Patna 800001",
+      },
+      {
+        label: "House No. 60B",
+        address: "House No. 60B, Montessori School Lane, Boring Road, Patna 800001",
+      },
+    ],
+    sixtyBPhotos: [
+      {
+        src: "/gallery/boring-road-60b-exterior.png",
+        alt: "Boring Road 60B branch building exterior",
+      },
+      {
+        src: "/gallery/boring-road-60b-room.png",
+        alt: "Boring Road 60B branch furnished room",
+      },
+      {
+        src: "/gallery/boring-road-60b-bathroom.png",
+        alt: "Boring Road 60B branch bathroom",
+      },
+      {
+        src: "/gallery/boring-road-60b-terrace.png",
+        alt: "Boring Road 60B branch terrace area",
+      },
+    ],
     nearby: [
-      "Walking distance to coaching institutes",
+      "Walking distance to Allen Coaching, Physics Wallah, and Mentors Eduserv",
       "Close to major colleges and student areas",
       "Quiet residential lane for focused study",
     ],
@@ -60,7 +92,7 @@ export const branches = [
       "24/7 CCTV surveillance",
       "Female warden on site",
       "Hygienic home-style meals",
-      "RO drinking water",
+      "RO water cooler",
       "Peaceful study-friendly atmosphere",
     ],
   },
@@ -81,7 +113,7 @@ export const branches = [
     intro:
       "The Rajapur branch offers modern infrastructure and practical connectivity for students looking for safe, comfortable accommodation in central Patna.",
     nearby: [
-      "Easy approach from the main road",
+      "Next to Aakash Institute and Unacademy",
       "Close to daily essentials and local markets",
       "Well-connected for coaching and college commutes",
     ],
@@ -90,6 +122,7 @@ export const branches = [
       "Secure entry and CCTV coverage",
       "Clean washrooms and common areas",
       "Power backup",
+      "Washing machine",
       "High-speed Wi-Fi",
       "Supportive owner-managed care",
     ],
@@ -98,5 +131,4 @@ export const branches = [
 
 export const publicRoutes = ["/", ...branches.map((branch) => branch.path)];
 
-export const getBranchBySlug = (slug: string) =>
-  branches.find((branch) => branch.slug === slug);
+export const getBranchBySlug = (slug: string) => branches.find((branch) => branch.slug === slug);

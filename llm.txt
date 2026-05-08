@@ -1,0 +1,86 @@
+# Sushmita Hostel
+
+This repository contains the marketing website for Sushmita Girls Hostel in Patna, Bihar, India.
+
+## Project purpose
+
+- Promote Sushmita Girls Hostel as a safe, owner-managed girls hostel in Patna.
+- Present branch-specific landing pages for local SEO.
+- Surface contact details, amenities, gallery content, testimonials, and inquiry paths.
+
+## Stack
+
+- Vite
+- React 18
+- TypeScript
+- Tailwind CSS
+- React Router
+- shadcn/ui
+- Vitest
+
+## Main runtime structure
+
+- `src/App.tsx`: top-level router with `/`, `/:slug`, and fallback routes.
+- `src/pages/Index.tsx`: homepage assembled from section components.
+- `src/pages/BranchPage.tsx`: branch landing page template driven by slug.
+- `src/content/site.ts`: single source of truth for business, contact, hours, and branch SEO content.
+- `src/components/SeoHead.tsx`: page metadata and structured data injection.
+- `src/lib/seo.ts`: absolute URL helpers based on `VITE_SITE_URL`.
+
+## Business data
+
+- Brand: `Sushmita Girls Hostel`
+- City: `Patna`
+- Region: `Bihar`
+- Country: `India`
+- Founders: `Sushmita Sinha`, `Rakesh Sinha`
+- Established: `2010`
+- Primary phone: `+91 94316 25833`
+- Secondary phone: `+91 93414 53366`
+- Email: `sushmitagirlshostelpatna@gmail.com`
+
+## Public routes
+
+- `/`: homepage
+- `/girls-hostel-boring-road-patna`: Boring Road branch landing page
+- `/girls-hostel-rajapur-patna`: Rajapur branch landing page
+
+## Content model
+
+Each branch entry in `src/content/site.ts` includes:
+
+- `slug`
+- `path`
+- `shortName`
+- `name`
+- `locality`
+- `address`
+- `postalCode`
+- `image`
+- `mapQuery`
+- `title`
+- `description`
+- `intro`
+- `nearby`
+- `features`
+
+## SEO behavior
+
+- `npm run seo:generate` creates `public/robots.txt` and `public/sitemap.xml`.
+- `VITE_SITE_URL` should be set before production builds so generated canonical URLs and sitemap links use the live domain.
+- The site emits Schema.org structured data for the website, organization, branch list, and branch-level lodging business pages.
+
+## Local development
+
+- `npm run dev`: start local server
+- `npm run lint`: lint code
+- `npm run typecheck`: TypeScript checks
+- `npm run test`: run tests
+- `npm run build`: production build
+
+## Guidance for AI tools
+
+- Prefer updating `src/content/site.ts` for business, branch, contact, and SEO copy changes.
+- Keep branch page content aligned with the slug-driven route model.
+- Preserve owner-managed, safety-focused, student-friendly messaging.
+- When changing SEO output, verify both route metadata and generated public files.

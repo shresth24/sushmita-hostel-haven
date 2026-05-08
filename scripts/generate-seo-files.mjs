@@ -17,7 +17,11 @@ const normalizeSiteUrl = (value) => {
 const siteUrl = rawSiteUrl ? normalizeSiteUrl(rawSiteUrl) : "";
 const publicDir = path.resolve("public");
 
-const routes = ["/", "/girls-hostel-boring-road-patna", "/girls-hostel-rajapur-patna"];
+const routes = [
+  "/",
+  "/girls-hostel-boring-road-patna",
+  "/girls-hostel-rajapur-patna",
+];
 
 const lastModified = new Date().toISOString();
 
