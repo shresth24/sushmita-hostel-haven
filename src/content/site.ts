@@ -41,7 +41,7 @@ export const branches = [
     name: "Sushmita Girls Hostel - Boring Road Branch",
     locality: "Boring Road",
     addressLine1: "House No. 14, Montessori School Lane",
-    address: "House No. 60B and House No. 14, Montessori School Lane, Boring Road, Patna 800001",
+    address: "House No. 14, Montessori School Lane, Boring Road, Patna 800001",
     addressPoints: [
       "House No. 60B, Montessori School Lane, Boring Road, Patna 800001",
       "House No. 14, Montessori School Lane, Boring Road, Patna 800001",

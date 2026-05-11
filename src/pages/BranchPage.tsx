@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { MapPin, Phone, Mail, Clock, ArrowLeft, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -10,6 +10,7 @@ import NotFound from "./NotFound";
 
 const BranchPage = () => {
   const { slug = "" } = useParams();
+  const location = useLocation();
   const branch = getBranchBySlug(slug);
 
   if (!branch) {
@@ -50,6 +51,7 @@ const BranchPage = () => {
   const [activeGroupId, setActiveGroupId] = useState(photoGroups[0]?.id ?? "house-14");
   const [activePhotoIndex, setActivePhotoIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
+  const photoTourRef = useRef<HTMLElement | null>(null);
 
   const activeGroup = photoGroups.find((group) => group.id === activeGroupId) ?? photoGroups[0];
   const activePhoto = activeGroup?.photos[activePhotoIndex] ?? activeGroup?.photos[0];
@@ -72,6 +74,18 @@ const BranchPage = () => {
     }, 3500);
     return () => window.clearInterval(timer);
   }, [activeGroupId, activePhotoCount]);
+
+  useEffect(() => {
+    if (location.hash !== "#branch-photo-tour") return;
+    const requestedPhotoGroup = new URLSearchParams(location.search).get("photo");
+    if (requestedPhotoGroup && photoGroups.some((group) => group.id === requestedPhotoGroup)) {
+      setActiveGroupId(requestedPhotoGroup);
+      setActivePhotoIndex(0);
+    }
+    window.setTimeout(() => {
+      photoTourRef.current?.scrollIntoView({ block: "start" });
+    }, 0);
+  }, [location.hash, location.pathname, location.search, photoGroups]);
 
   const alternateBranches = branches.filter((item) => item.slug !== branch.slug);
 
@@ -203,7 +217,7 @@ const BranchPage = () => {
         </section>
 
         {activeGroup && activePhoto ? (
-          <section className="pt-4 pb-16 bg-surface">
+          <section id="branch-photo-tour" ref={photoTourRef} className="scroll-mt-20 pt-4 pb-16 bg-surface">
             <div className="max-w-6xl mx-auto">
               <div className="flex flex-wrap items-end justify-between gap-4 mb-6">
                 <div>
@@ -410,7 +424,7 @@ const BranchPage = () => {
               {alternateBranches.map((item) => (
                 <Link
                   key={item.slug}
-                  to={item.path}
+                  to={`${item.path}?photo=house-14#branch-photo-tour`}
                   className="rounded-[2rem] border border-border bg-background p-7 transition-transform duration-200 hover:-translate-y-0.5"
                 >
                   <p className="text-sm font-semibold text-primary uppercase tracking-[0.18em] mb-3">{item.shortName}</p>

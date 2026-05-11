@@ -33,6 +33,11 @@ const branchCards = [
 const BranchesSection = () => {
   const ref = useScrollReveal();
 
+  const getExplorePath = (branch: (typeof branchCards)[number]) => {
+    const photoGroup = branch.shortName === "Boring Road 60B" ? "house-60b" : "house-14";
+    return `${branch.path}?photo=${photoGroup}#branch-photo-tour`;
+  };
+
   return (
     <section id="branches" className="section-padding">
       <div ref={ref} className="max-w-7xl mx-auto">
@@ -97,7 +102,7 @@ const BranchesSection = () => {
                   </ul>
                   <div className="mt-6">
                     <Link
-                      to={branch.path}
+                      to={getExplorePath(branch)}
                       className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80"
                     >
                       Explore {branch.shortName === "Boring Road 60B" ? "Boring Road" : branch.shortName} branch
